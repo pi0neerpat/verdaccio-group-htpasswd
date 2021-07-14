@@ -20,11 +20,6 @@ Generate a new Docker image.
 ```bash
 # Build
 docker build -t pi0neerpat/verdaccio-group-htpasswd .
-
-# Test it out
-docker run -p 4873:4873 -d pi0neerpat/verdaccio-group-htpasswd
-
-# Publish it when ready!
 ```
 
 ## Deployment

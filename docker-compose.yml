@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 services:
   verdaccio:
@@ -14,7 +14,7 @@ services:
     volumes:
       - "./storage:/verdaccio/storage"
       - "./config:/verdaccio/conf"
-      - "./plugins:/verdaccio/plugins"
+      # - "./plugins:/verdaccio/plugins"
 networks:
   node-network:
     driver: bridge
