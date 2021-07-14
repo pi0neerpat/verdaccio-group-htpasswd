@@ -15,13 +15,15 @@ web:
 
 auth:
   htpasswd:
-    files: # Requires verdaccio-htpasswd-groups
-     - file: ./htpasswd
-       isDefault: true
-       groupName: admin
-     - file: ./dappy-htpasswd # Generated with https://www.web2generators.com/apache-tools/htpasswd-generator
-       isDefault: false
-       groupName: dappy-early-access
+    files:
+      # Requires verdaccio-htpasswd-groups
+      - file: ./htpasswd
+        isDefault: true
+        groupName: admin
+      - file: ./dappy-htpasswd
+        # Generated with https://www.web2generators.com/apache-tools/htpasswd-generator
+        isDefault: false
+        groupName: dappy-early-access
     max_users: -1
 
 # a list of other known repositories we can talk to
@@ -30,18 +32,18 @@ auth:
 #     url: https://registry.npmjs.org/
 
 packages:
-  '@dappy/*':
+  "@dappy/*":
     access: dappy-early-access
     publish: admin
     unpublish: admin
-   # proxy: npmjs
-  '@pi0neerpat/*':
+    # proxy: npmjs
+  "@pi0neerpat/*":
     access: admin
     publish: admin
     unpublish: admin
-   # proxy: npmjs # prevent using the server to get other packages
+    # proxy: npmjs # prevent using the server to get other packages
 
-  '**':
+  "**":
     # you can specify usernames/groupnames (depending on your auth plugin)
     # and three keywords: "$all", "$anonymous", "$authenticated"
     access: $all

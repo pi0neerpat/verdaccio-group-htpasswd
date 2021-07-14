@@ -24,12 +24,9 @@ docker build -t pi0neerpat/verdaccio-group-htpasswd .
 
 ## Deployment
 
-If you published your own version, be sure update the image name in `docker-compose.yml`. Be sure to update your `.env` file on the new machine as well.
+Update the image name in `docker-compose.yml`, and add your `htpasswd` files.
 
 ```bash
-# Load the .env file
-source .env
-
 # Start in "detached" mode
 docker-compose up -d
 ```
