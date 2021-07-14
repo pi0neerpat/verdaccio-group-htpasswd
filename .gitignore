@@ -1,2 +1,4 @@
 node_modules/
 *htpasswd
+./storage/
+./local_storage/

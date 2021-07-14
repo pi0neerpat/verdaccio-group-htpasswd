@@ -12,8 +12,8 @@ services:
     ports:
       - "4873:4873"
     volumes:
-      - "./storage:/verdaccio/storage"
-      - "./config:/verdaccio/conf"
+      - ./config:/verdaccio/conf
+      - ./storage:/verdaccio/storage
       # - "./plugins:/verdaccio/plugins"
 networks:
   node-network:

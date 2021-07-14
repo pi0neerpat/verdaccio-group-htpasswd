@@ -15,15 +15,16 @@ web:
 
 auth:
   htpasswd:
-    files:
-      # Requires verdaccio-htpasswd-groups
-      - file: ./htpasswd
-        isDefault: true
-        groupName: admin
-      - file: ./dappy-htpasswd
-        # Generated with https://www.web2generators.com/apache-tools/htpasswd-generator
-        isDefault: false
-        groupName: dappy-early-access
+    file: ./htpasswd
+    # files:
+    # Requires verdaccio-htpasswd-groups
+    # - file: ./htpasswd
+    #   isDefault: true
+    #   groupName: admin
+    # - file: ./dappy-htpasswd
+    #   # Generated with https://www.web2generators.com/apache-tools/htpasswd-generator
+    #   isDefault: false
+    #   groupName: dappy-early-access
     max_users: -1
 
 # a list of other known repositories we can talk to
