@@ -1,0 +1,68 @@
+# https://github.com/verdaccio/verdaccio/tree/master/conf
+
+# path to a directory with all packages
+storage: /verdaccio/storage/data
+# path to a directory with plugins to include
+plugins: /verdaccio/plugins
+
+web:
+  # WebUI is enabled as default, if you want disable it, just uncomment this line
+  title: npm.patrickgallager.dev
+  # comment out to disable gravatar support
+  # gravatar: false
+  # by default packages are ordercer ascendant (asc|desc)
+  # sort_packages: asc
+
+auth:
+  htpasswd:
+    files: # Requires verdaccio-htpasswd-groups
+     - file: ./htpasswd
+       isDefault: true
+       groupName: admin
+     - file: ./dappy-htpasswd # Generated with https://www.web2generators.com/apache-tools/htpasswd-generator
+       isDefault: false
+       groupName: dappy-early-access
+    max_users: -1
+
+# a list of other known repositories we can talk to
+# uplinks:
+#   npmjs:
+#     url: https://registry.npmjs.org/
+
+packages:
+  '@dappy/*':
+    access: dappy-early-access
+    publish: admin
+    unpublish: admin
+   # proxy: npmjs
+  '@pi0neerpat/*':
+    access: admin
+    publish: admin
+    unpublish: admin
+   # proxy: npmjs # prevent using the server to get other packages
+
+  '**':
+    # you can specify usernames/groupnames (depending on your auth plugin)
+    # and three keywords: "$all", "$anonymous", "$authenticated"
+    access: $all
+    publish: admin
+    unpublish: admin
+    #proxy: npmjs
+
+middlewares:
+  audit:
+    enabled: true
+
+# log settings
+logs:
+  - { type: stdout, format: pretty, level: http }
+  #- {type: file, path: verdaccio.log, level: info}
+#experiments:
+#  # support for npm token command
+#  token: false
+
+# This affect the web and api (not developed yet)
+#i18n:
+#web: en-US
+
+max_body_size: 100mb

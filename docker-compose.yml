@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  verdaccio:
+    restart: unless-stopped
+    image: pi0neerpat/verdaccio-group-htpasswd
+    container_name: "verdaccio-group-htpasswd"
+    networks:
+      - node-network
+    environment:
+      - VERDACCIO_PORT=4873
+    ports:
+      - "4873:4873"
+    volumes:
+      - "./storage:/verdaccio/storage"
+      - "./config:/verdaccio/conf"
+      - "./plugins:/verdaccio/plugins"
+networks:
+  node-network:
+    driver: bridge
