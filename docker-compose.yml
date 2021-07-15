@@ -3,7 +3,8 @@ version: "3.1"
 services:
   verdaccio:
     restart: unless-stopped
-    image: pi0neerpat/verdaccio-group-htpasswd
+    image: verdaccio/verdaccio
+    # image: pi0neerpat/verdaccio-group-htpasswd
     container_name: "verdaccio-group-htpasswd"
     networks:
       - node-network

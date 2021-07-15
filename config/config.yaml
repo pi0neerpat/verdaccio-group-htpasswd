@@ -7,7 +7,7 @@ plugins: /verdaccio/plugins
 
 web:
   # WebUI is enabled as default, if you want disable it, just uncomment this line
-  title: npm.patrickgallager.dev
+  title: npm.dappy.dev
   # comment out to disable gravatar support
   # gravatar: false
   # by default packages are ordercer ascendant (asc|desc)
@@ -16,16 +16,7 @@ web:
 auth:
   htpasswd:
     file: ./htpasswd
-    # files:
-    # Requires verdaccio-htpasswd-groups
-    # - file: ./htpasswd
-    #   isDefault: true
-    #   groupName: admin
-    # - file: ./dappy-htpasswd
-    #   # Generated with https://www.web2generators.com/apache-tools/htpasswd-generator
-    #   isDefault: false
-    #   groupName: dappy-early-access
-    max_users: -1
+    max_users: -1 # New registration is disabled
 
 # a list of other known repositories we can talk to
 # uplinks:
@@ -34,23 +25,13 @@ auth:
 
 packages:
   "@dappy/*":
-    access: dappy-early-access
+    access: $authorized
     publish: admin
     unpublish: admin
-    # proxy: npmjs
-  "@pi0neerpat/*":
+  "**":
     access: admin
     publish: admin
     unpublish: admin
-    # proxy: npmjs # prevent using the server to get other packages
-
-  "**":
-    # you can specify usernames/groupnames (depending on your auth plugin)
-    # and three keywords: "$all", "$anonymous", "$authenticated"
-    access: $all
-    publish: admin
-    unpublish: admin
-    #proxy: npmjs
 
 middlewares:
   audit:
